@@ -9,6 +9,10 @@
 #import "ViewController.h"
 
 
+#   define IS_QUEUE             1
+#   define IS_GCD               0
+#   define IS_THREAD            0
+
 #   define IS_SYNCHRONIZED     1
 #   define IS_LOCK             0
 #   define IS_SEMAPHORE        0
@@ -36,6 +40,33 @@ static int TICKETCOUNT = 30;
 }
 
 - (void)threadSell {
+#if IS_QUEUE
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self sellByThread:@"man1"];
+    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self sellByThread:@"man2"];
+    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self sellByThread:@"man3"];
+    });
+#elif IS_QUEUE
+    NSOperationQueue *queue = [NSOperationQueue new];
+    queue.maxConcurrentOperationCount = 3;
+    NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+        [self sellByThread:@"man1"];
+    }];
+    
+    NSBlockOperation *op2 = [NSBlockOperation blockOperationWithBlock:^{
+        [self sellByThread:@"man2"];
+    }];
+    
+    [queue addOperations:@[
+                          op, op2
+                          ] waitUntilFinished:NO];
+#elif IS_THREAD
     [NSThread detachNewThreadWithBlock:^{
         [self sellByThread:@"man1"];
     }];
@@ -43,6 +74,7 @@ static int TICKETCOUNT = 30;
     [NSThread detachNewThreadWithBlock:^{
         [self sellByThread:@"man2"];
     }];
+#endif
 }
 
 - (void)sellByThread:(NSString*)name {
