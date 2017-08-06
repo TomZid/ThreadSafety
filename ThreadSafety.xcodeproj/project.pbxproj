@@ -15,7 +15,18 @@
 		0AA2D9021F35BB6500FBA682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA2D9001F35BB6500FBA682 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0A2A4BB11F3746D90079B56E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A2A4BAD1F3746D80079B56E /* 读写操作.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A2A4B931F3746D80079B56E;
+			remoteInfo = "读写操作";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0A2A4BAD1F3746D80079B56E /* 读写操作.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "读写操作.xcodeproj"; path = "读写操作DEMO/读写操作/读写操作.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		0AA2D8EF1F35BB6500FBA682 /* ThreadSafety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreadSafety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AA2D8F31F35BB6500FBA682 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0AA2D8F51F35BB6500FBA682 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -39,9 +50,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2A4BAE1F3746D80079B56E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A2A4BB21F3746D90079B56E /* 读写操作.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0AA2D8E61F35BB6500FBA682 = {
 			isa = PBXGroup;
 			children = (
+				0A2A4BAD1F3746D80079B56E /* 读写操作.xcodeproj */,
 				0AA2D8F11F35BB6500FBA682 /* ThreadSafety */,
 				0AA2D8F01F35BB6500FBA682 /* Products */,
 			);
@@ -125,12 +145,28 @@
 			mainGroup = 0AA2D8E61F35BB6500FBA682;
 			productRefGroup = 0AA2D8F01F35BB6500FBA682 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0A2A4BAE1F3746D80079B56E /* Products */;
+					ProjectRef = 0A2A4BAD1F3746D80079B56E /* 读写操作.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0AA2D8EE1F35BB6500FBA682 /* ThreadSafety */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0A2A4BB21F3746D90079B56E /* 读写操作.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "读写操作.app";
+			remoteRef = 0A2A4BB11F3746D90079B56E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0AA2D8ED1F35BB6500FBA682 /* Resources */ = {
