@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 
-
 #   define IS_QUEUE             1
 #   define IS_GCD               0
 #   define IS_THREAD            0
@@ -24,6 +23,7 @@ static int TICKETCOUNT = 30;
     __weak IBOutlet UILabel *_label;
 }
 @property (nonatomic, strong) NSMutableString *mutStr;
+@property (nonatomic, assign)  NSInteger num;
 @end
 
 @implementation ViewController
@@ -40,7 +40,7 @@ static int TICKETCOUNT = 30;
 }
 
 - (void)threadSell {
-#if IS_QUEUE
+#if IS_GCD
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self sellByThread:@"man1"];
     });
@@ -54,6 +54,7 @@ static int TICKETCOUNT = 30;
     });
 #elif IS_QUEUE
     NSOperationQueue *queue = [NSOperationQueue new];
+    queue.name = @"haha";
     queue.maxConcurrentOperationCount = 3;
     NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
         [self sellByThread:@"man1"];
